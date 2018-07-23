@@ -1,0 +1,1 @@
+# karaoke-manager-app
