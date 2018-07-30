@@ -1,4 +1,4 @@
 static/node_modules/
 static/package-lock.json
 server/env/
-
+.idea/*
