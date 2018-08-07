@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Integer, String, Column, Boolean, DateTime, func
 
@@ -19,19 +19,20 @@ class Song(db.Model):
     created_at = Column(DateTime, default=func.current_timestamp())
     deleted = Column(Boolean(), default=False)
 
-    def __init__(self, name, artist_name, description, created_at, deleted):
+    def __init__(self, name, artist_name, description):
         self.name = name
         self.artist_name = artist_name
         self.description = description
-        self.created_at = created_at
-        self.deleted = deleted
 
     def __repr__(self):
         return '<Song %r by %r>' % (self.name, self.artist_name)
 
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def index():
+    if request.form:
+        print(request.form)
+
     return render_template("index.html")
 
 

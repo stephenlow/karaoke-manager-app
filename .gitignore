@@ -2,4 +2,4 @@ static/node_modules/
 static/package-lock.json
 venv/*
 .idea/*
-server/src/*.pyc
+*.pyc
