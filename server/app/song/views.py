@@ -13,23 +13,20 @@ api = Api(song)
 schema = SongSchema(strict=True)
 
 
-@song.route("/", methods=['GET', 'POST'])
-def index():
-    if request.form:
-        print(request.form)
-
-    return render_template("index.html")
-
-
 @song.route("/hello")
 def hello():
     return "Hello World!"
 
 
 class SongList(Resource):
+    @staticmethod
+    def get():
+        song_query = Song.query.all()
+        results = schema.dump(song_query, many=True).data
+        return results
 
-    # def get(self):
 
+class SongCreate(Resource):
     @staticmethod
     def post():
         raw_data = request.get_json(force=True)
@@ -67,4 +64,5 @@ class SongList(Resource):
             return resp
 
 
-api.add_resource(SongList, '/add')
+api.add_resource(SongList, '/')
+api.add_resource(SongCreate, '/add')
