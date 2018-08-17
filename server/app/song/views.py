@@ -1,5 +1,5 @@
 from __future__ import print_function
-from flask import Blueprint, request, render_template, jsonify
+from flask import Blueprint, request, jsonify
 from flask_restful import Resource, Api
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -8,7 +8,7 @@ from server.app.song.models import Song, SongSchema
 from marshmallow import ValidationError
 import sys
 
-song = Blueprint('song', __name__, template_folder='../../../static')
+song = Blueprint('song', __name__)
 api = Api(song)
 schema = SongSchema(strict=True)
 
@@ -23,7 +23,7 @@ class SongList(Resource):
     def get():
         song_query = Song.query.all()
         results = schema.dump(song_query, many=True).data
-        return results
+        return jsonify(results)
 
 
 class SongCreate(Resource):

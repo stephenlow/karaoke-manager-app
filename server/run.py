@@ -1,15 +1,6 @@
 from app import create_app
-from flask import request, render_template
 
 app = create_app('config')
-
-
-@app.route("/", methods=['GET', 'POST'])
-def index():
-    if request.form:
-        print(request.form)
-
-    return render_template("index.html")
 
 
 @app.route("/hello")
