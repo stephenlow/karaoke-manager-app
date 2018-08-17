@@ -39,31 +39,33 @@ class Table extends Component {
 
   render() {
     return (
-      <div>
-        <BootstrapTable data={this.state.songs}>
-          <TableHeaderColumn isKey dataField="id">
-            ID
-          </TableHeaderColumn>
-          <TableHeaderColumn
-            dataField="attributes"
-            dataFormat={this.showSongName}
-          >
-            Name
-          </TableHeaderColumn>
-          <TableHeaderColumn
-            dataField="attributes"
-            dataFormat={this.showArtistName}
-          >
-            Value
-          </TableHeaderColumn>
-          <TableHeaderColumn
-            dataField="attributes"
-            dataFormat={this.showDescription}
-          >
-            Description
-          </TableHeaderColumn>
-        </BootstrapTable>
-      </div>
+      <React.Fragment>
+        <div>
+          <BootstrapTable data={this.state.songs}>
+            <TableHeaderColumn isKey dataField="id">
+              ID
+            </TableHeaderColumn>
+            <TableHeaderColumn
+              dataField="attributes"
+              dataFormat={this.showSongName}
+            >
+              Name
+            </TableHeaderColumn>
+            <TableHeaderColumn
+              dataField="attributes"
+              dataFormat={this.showArtistName}
+            >
+              Value
+            </TableHeaderColumn>
+            <TableHeaderColumn
+              dataField="attributes"
+              dataFormat={this.showDescription}
+            >
+              Description
+            </TableHeaderColumn>
+          </BootstrapTable>
+        </div>
+      </React.Fragment>
     );
   }
 }
