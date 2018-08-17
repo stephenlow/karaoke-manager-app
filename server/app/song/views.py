@@ -13,11 +13,6 @@ api = Api(song)
 schema = SongSchema(strict=True)
 
 
-@song.route("/hello")
-def hello():
-    return "Hello World!"
-
-
 class SongList(Resource):
     @staticmethod
     def get():
